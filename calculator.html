@@ -1,0 +1,150 @@
+*<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            
+        }
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            background-color:rgb(238, 237, 237);
+        
+
+            
+        }
+        .main{
+            width:400px;
+            background-color:rgb(236, 176, 115);
+            padding:25px 20px 30px;
+            border-radius:15px;
+        }
+       .screen {
+    background-color: #141313;
+    padding: 17px;
+    text-align: right;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    min-height: 50px;
+    color: white; 
+}
+.buttons{
+            display:grid;
+            grid-template-columns:0.9fr 0.9fr 0.9fr 0.9fr;
+            gap:10px;
+        }
+        button{
+            background-color:rgb(152, 108, 108);
+            border:none;
+            border-radius:5px;
+            color:rgb(17, 15, 15);
+            font-size:1.5rem;
+            padding:20px;
+            cursor:pointer;
+            transition:background-color 0.3s;
+
+
+        }
+        button:hover{
+            background-color:chocolate;
+        }
+#calc,#clear,#delete{
+    background-color:chocolate;
+    color:rgb(16, 2, 2);
+}
+#calc.hover,#clear.hover,#delete.hover{
+    background-color:#111110;
+}
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="screen">
+            <span id="display">0</span>
+            </div>
+    
+    
+ <div class="buttons">
+
+    <button id="square" onclick="sqr()">x²</button>
+    <button id="root" onclick="root()">√x</button>
+    <button id="clear" onclick="clr()">Clear</button>
+    <button id="delete" onclick="del()">Delete</button>
+    <button id="seven" onclick="insert('7')">7</button>
+    <button id="eight" onclick="insert('8')">8</button>
+    <button id="nine" onclick="insert('9')">9</button>
+    <button id="divide" onclick="isnert('/')">/</button>
+    <button id="four" onclick="insert('4')">4</button>
+    <button id="five" onclick="insert('5')">5</button>
+    <button id="six" onclick="insert('6')">6</button>
+    <button id="multiply" onclick="insert('*')">x</button>
+    <button id="one" onclick="insert('1')">1</button>
+    <button id="two" onclick="insert('2')">2</button>
+    <button id="three" onclick="insert('3')">3</button>
+    <button id="subtract" onclick="insert('-')">-</button>
+    <button id="calc" onclick="calc()">=</button>
+    <button id="zero" onclick="insert('0')">0</button>
+    <button id="decimal" onclick="isnert('.')">.</button>
+    <button id="add" onclick="insert('+')">+</button>
+    
+ </div>
+ </div>   
+</body>
+<script>
+    const display = document.getElementById('display');
+
+    function insert(value) {
+        if (display.textContent === "0") {
+            display.textContent = value;
+        } else {
+            display.textContent += value;
+        }
+    }
+
+    function clr() {
+        display.textContent = "0";
+    }
+
+    function del() {
+        if (display.textContent.length === 1) {
+            display.textContent = "0";
+        } else {
+            display.textContent = display.textContent.slice(0, -1);
+        }
+    }
+
+    function calc() {
+        try {
+            display.textContent = eval(display.textContent);
+        } catch {
+            display.textContent = "Error";
+        }
+    }
+
+    function sqr() {
+        try {
+            display.textContent = Math.pow(parseFloat(display.textContent), 2);
+        } catch {
+            display.textContent = "Error";
+        }
+    }
+
+    function root() {
+        try {
+            display.textContent = Math.sqrt(parseFloat(display.textContent));
+        } catch {
+            display.textContent = "Error";
+        }
+    }
+</script>
+</html> 
